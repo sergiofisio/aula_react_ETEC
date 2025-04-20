@@ -1,0 +1,12 @@
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.header__button > img {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(188, 60, 60);
+  box-shadow: rgba(0, 0, 0, 0.365) 0px 4px 5px 0px;
+  border-radius: 5px;
+}
