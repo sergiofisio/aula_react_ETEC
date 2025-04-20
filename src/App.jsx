@@ -3,6 +3,7 @@ import "./App.css";
 import { Header } from "./componets/header";
 import Home from "./pages/home";
 import Sobre from "./pages/sobre";
+import Footer from "./componets/footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

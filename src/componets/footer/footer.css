@@ -1,0 +1,18 @@
+.icons {
+    width: 25px;
+    height: 25px;
+}
+
+footer {
+    background-color: #727DB2;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.p_footer {
+    font-family: system-ui;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
