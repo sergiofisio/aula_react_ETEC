@@ -1,0 +1,10 @@
+a {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  background-color: rgb(188, 60, 60);
+  box-shadow: rgba(0, 0, 0, 0.365) 0px 4px 5px 0px;
+  border-radius: 12px;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
