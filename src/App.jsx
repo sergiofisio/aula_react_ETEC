@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Header } from "./componets/header";
+import { Header } from "./components/header";
 import Home from "./pages/home";
-import Sobre from "./pages/sobre";
-import Footer from "./componets/footer";
+import Footer from "./components/footer";
+import Cardapio from "./pages/cardapio";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sobre" element={<Sobre />} />
+        <Route path="/cardapios" element={<Cardapio />} />
       </Routes>
       <Footer />
     </div>
