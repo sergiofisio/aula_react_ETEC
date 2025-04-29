@@ -1,5 +1,5 @@
 #main_cardapio {
-    min-height: 100vh; /* ✅ Preenche a altura da tela */
+    height: 100vh; /* ✅ Preenche a altura da tela */
     padding: 5%; /* Adicione padding interno se necessário */
     background-color:rgb(87, 87, 87) ;
     box-sizing: border-box; /* Mantém o padding dentro da altura total */
@@ -16,7 +16,5 @@
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width:70%;
     margin: 0 15% ;
-
-
     border-radius: 10px;
   }
