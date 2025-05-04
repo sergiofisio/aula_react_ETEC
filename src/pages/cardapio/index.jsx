@@ -1,6 +1,6 @@
 export default function Cardapio() {
   return (
-    <div>
+    <div className="section">
       <h2>Cardapio</h2>
     </div>
   );
