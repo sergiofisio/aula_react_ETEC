@@ -6,7 +6,7 @@
 footer {
   background-color: #727db2;
   width: 100%;
-  position: relative;
+  height: 120px;
   z-index: 10;
 }
 
