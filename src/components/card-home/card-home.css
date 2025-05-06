@@ -1,0 +1,35 @@
+.card-home {
+    color: white;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.card-home-invertido {
+    flex-direction: row-reverse;
+}
+
+.card_vermelho {
+    background-color: red;
+}
+
+.card_cinza {
+    background-color: grey;
+}
+
+.imagem-card-grande {
+    width: 100%;
+    height: 200px;
+}
+
+.imagem-card-medio {
+    width: 100%;
+    height: 150px;
+}
+
+.imagem-card-pequeno {
+    width: 100%;
+    height: 100px;
+}
