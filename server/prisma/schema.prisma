@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//criar tabela de usuario com emmail, usename, password, createdAt, updatedAt
+model cliente {
+  id              String    @id @default(uuid())
+  nome            String
+  email           String    @unique
+  data_nascimento DateTime
+  password        String
+  endereco        endereco?
+  telefone        telefone?
+  reservas        reserva[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model endereco {
+  id          String   @id @default(uuid())
+  logradouro  String
+  numero      String
+  complemento String?
+  bairro      String
+  cidade      String
+  estado      String
+  cep         String
+  userId      String   @unique
+  user        cliente  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model telefone {
+  id        String   @id @default(uuid())
+  ddd       String
+  numero    String
+  userId    String   @unique
+  user      cliente  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model reserva {
+  id          String   @id @default(uuid())
+  data_inicio DateTime
+  data_fim    DateTime
+  valor       Float
+  payed       Boolean
+  status      String
+  userId      String
+  pedidos     pedido[]
+  user        cliente  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model pedido {
+  id        String   @id @default(uuid())
+  data      DateTime
+  valor     Float
+  reservaId String
+  reserva   reserva  @relation(fields: [reservaId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
