@@ -7,14 +7,14 @@ import Cardapio from "./pages/cardapio";
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cardapios" element={<Cardapio />} />
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 
