@@ -4,20 +4,8 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .section {
-  min-height: calc(100% - 320px);
-  max-height: calc(100% - 320px);
-  /* O cálculo serve para fixar o footer no final da página, mas
-qual é a lógica do cálculo? Não lembro. */
-  max-width: fit-content;
-  overflow-y: auto;
-  /* Para o scroll aparecer só quando necessário */
+  height: calc(100vh - 320px);
+  max-height: calc(100vh - 320px);
+  overflow-y: scroll;
 }
