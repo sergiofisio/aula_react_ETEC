@@ -1,34 +1,17 @@
-.home {
-  margin: 10px 0;
-  padding: 10px;
-}
-
 .home-section {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 10px 50px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+.container-home {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
 
-html,
-body {
   height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  padding: 0 3rem;
 
-.section {
-  min-height: calc(100vh - 320px);
-  max-height: calc(100vh - 320px);
-  /* O cálculo serve para fixar o footer no final da página, mas
-qual é a lógica do cálculo? Não lembro.*/
-  max-width: fit-content;
-  overflow-y: auto;
-  /* Para o scroll aparecer só quando necessário*/
+  overflow: auto;
 }
-
-/* Perguntar por quê o scroll está em cima do conteúdo da página no meu*/

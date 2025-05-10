@@ -1,8 +1,8 @@
 import "./button.css";
 
-export default function Button({ icon, className }) {
+export default function Button({ icon, className, onClick }) {
   return (
-    <button className={className}>
+    <button onClick={onClick} className={className}>
       <img src={icon} alt="Icone de login" />
     </button>
   );

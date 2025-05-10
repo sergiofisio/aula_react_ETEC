@@ -2442,14 +2442,24 @@ export namespace Prisma {
 
   export type AggregateEndereco = {
     _count: EnderecoCountAggregateOutputType | null
+    _avg: EnderecoAvgAggregateOutputType | null
+    _sum: EnderecoSumAggregateOutputType | null
     _min: EnderecoMinAggregateOutputType | null
     _max: EnderecoMaxAggregateOutputType | null
+  }
+
+  export type EnderecoAvgAggregateOutputType = {
+    numero: number | null
+  }
+
+  export type EnderecoSumAggregateOutputType = {
+    numero: number | null
   }
 
   export type EnderecoMinAggregateOutputType = {
     id: string | null
     logradouro: string | null
-    numero: string | null
+    numero: number | null
     complemento: string | null
     bairro: string | null
     cidade: string | null
@@ -2463,7 +2473,7 @@ export namespace Prisma {
   export type EnderecoMaxAggregateOutputType = {
     id: string | null
     logradouro: string | null
-    numero: string | null
+    numero: number | null
     complemento: string | null
     bairro: string | null
     cidade: string | null
@@ -2489,6 +2499,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type EnderecoAvgAggregateInputType = {
+    numero?: true
+  }
+
+  export type EnderecoSumAggregateInputType = {
+    numero?: true
+  }
 
   export type EnderecoMinAggregateInputType = {
     id?: true
@@ -2571,6 +2589,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: EnderecoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EnderecoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: EnderecoMinAggregateInputType
@@ -2601,6 +2631,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: EnderecoCountAggregateInputType | true
+    _avg?: EnderecoAvgAggregateInputType
+    _sum?: EnderecoSumAggregateInputType
     _min?: EnderecoMinAggregateInputType
     _max?: EnderecoMaxAggregateInputType
   }
@@ -2608,7 +2640,7 @@ export namespace Prisma {
   export type EnderecoGroupByOutputType = {
     id: string
     logradouro: string
-    numero: string
+    numero: number
     complemento: string | null
     bairro: string
     cidade: string
@@ -2618,6 +2650,8 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     _count: EnderecoCountAggregateOutputType | null
+    _avg: EnderecoAvgAggregateOutputType | null
+    _sum: EnderecoSumAggregateOutputType | null
     _min: EnderecoMinAggregateOutputType | null
     _max: EnderecoMaxAggregateOutputType | null
   }
@@ -2714,7 +2748,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       logradouro: string
-      numero: string
+      numero: number
       complemento: string | null
       bairro: string
       cidade: string
@@ -3149,7 +3183,7 @@ export namespace Prisma {
   interface enderecoFieldRefs {
     readonly id: FieldRef<"endereco", 'String'>
     readonly logradouro: FieldRef<"endereco", 'String'>
-    readonly numero: FieldRef<"endereco", 'String'>
+    readonly numero: FieldRef<"endereco", 'Int'>
     readonly complemento: FieldRef<"endereco", 'String'>
     readonly bairro: FieldRef<"endereco", 'String'>
     readonly cidade: FieldRef<"endereco", 'String'>
@@ -7063,6 +7097,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7080,20 +7128,6 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
   /**
    * Deep Input Types
@@ -7177,7 +7211,7 @@ export namespace Prisma {
     NOT?: enderecoWhereInput | enderecoWhereInput[]
     id?: StringFilter<"endereco"> | string
     logradouro?: StringFilter<"endereco"> | string
-    numero?: StringFilter<"endereco"> | string
+    numero?: IntFilter<"endereco"> | number
     complemento?: StringNullableFilter<"endereco"> | string | null
     bairro?: StringFilter<"endereco"> | string
     cidade?: StringFilter<"endereco"> | string
@@ -7211,7 +7245,7 @@ export namespace Prisma {
     OR?: enderecoWhereInput[]
     NOT?: enderecoWhereInput | enderecoWhereInput[]
     logradouro?: StringFilter<"endereco"> | string
-    numero?: StringFilter<"endereco"> | string
+    numero?: IntFilter<"endereco"> | number
     complemento?: StringNullableFilter<"endereco"> | string | null
     bairro?: StringFilter<"endereco"> | string
     cidade?: StringFilter<"endereco"> | string
@@ -7235,8 +7269,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: enderecoCountOrderByAggregateInput
+    _avg?: enderecoAvgOrderByAggregateInput
     _max?: enderecoMaxOrderByAggregateInput
     _min?: enderecoMinOrderByAggregateInput
+    _sum?: enderecoSumOrderByAggregateInput
   }
 
   export type enderecoScalarWhereWithAggregatesInput = {
@@ -7245,7 +7281,7 @@ export namespace Prisma {
     NOT?: enderecoScalarWhereWithAggregatesInput | enderecoScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"endereco"> | string
     logradouro?: StringWithAggregatesFilter<"endereco"> | string
-    numero?: StringWithAggregatesFilter<"endereco"> | string
+    numero?: IntWithAggregatesFilter<"endereco"> | number
     complemento?: StringNullableWithAggregatesFilter<"endereco"> | string | null
     bairro?: StringWithAggregatesFilter<"endereco"> | string
     cidade?: StringWithAggregatesFilter<"endereco"> | string
@@ -7543,7 +7579,7 @@ export namespace Prisma {
   export type enderecoCreateInput = {
     id?: string
     logradouro: string
-    numero: string
+    numero: number
     complemento?: string | null
     bairro: string
     cidade: string
@@ -7557,7 +7593,7 @@ export namespace Prisma {
   export type enderecoUncheckedCreateInput = {
     id?: string
     logradouro: string
-    numero: string
+    numero: number
     complemento?: string | null
     bairro: string
     cidade: string
@@ -7571,7 +7607,7 @@ export namespace Prisma {
   export type enderecoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     logradouro?: StringFieldUpdateOperationsInput | string
-    numero?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
     complemento?: NullableStringFieldUpdateOperationsInput | string | null
     bairro?: StringFieldUpdateOperationsInput | string
     cidade?: StringFieldUpdateOperationsInput | string
@@ -7585,7 +7621,7 @@ export namespace Prisma {
   export type enderecoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     logradouro?: StringFieldUpdateOperationsInput | string
-    numero?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
     complemento?: NullableStringFieldUpdateOperationsInput | string | null
     bairro?: StringFieldUpdateOperationsInput | string
     cidade?: StringFieldUpdateOperationsInput | string
@@ -7599,7 +7635,7 @@ export namespace Prisma {
   export type enderecoCreateManyInput = {
     id?: string
     logradouro: string
-    numero: string
+    numero: number
     complemento?: string | null
     bairro: string
     cidade: string
@@ -7613,7 +7649,7 @@ export namespace Prisma {
   export type enderecoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     logradouro?: StringFieldUpdateOperationsInput | string
-    numero?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
     complemento?: NullableStringFieldUpdateOperationsInput | string | null
     bairro?: StringFieldUpdateOperationsInput | string
     cidade?: StringFieldUpdateOperationsInput | string
@@ -7626,7 +7662,7 @@ export namespace Prisma {
   export type enderecoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     logradouro?: StringFieldUpdateOperationsInput | string
-    numero?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
     complemento?: NullableStringFieldUpdateOperationsInput | string | null
     bairro?: StringFieldUpdateOperationsInput | string
     cidade?: StringFieldUpdateOperationsInput | string
@@ -7956,6 +7992,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -7995,6 +8042,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type enderecoAvgOrderByAggregateInput = {
+    numero?: SortOrder
+  }
+
   export type enderecoMaxOrderByAggregateInput = {
     id?: SortOrder
     logradouro?: SortOrder
@@ -8021,6 +8072,26 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type enderecoSumOrderByAggregateInput = {
+    numero?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8322,6 +8393,14 @@ export namespace Prisma {
     connect?: clienteWhereUniqueInput
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
@@ -8511,6 +8590,33 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -8537,17 +8643,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -8582,7 +8677,7 @@ export namespace Prisma {
   export type enderecoCreateWithoutUserInput = {
     id?: string
     logradouro: string
-    numero: string
+    numero: number
     complemento?: string | null
     bairro: string
     cidade: string
@@ -8595,7 +8690,7 @@ export namespace Prisma {
   export type enderecoUncheckedCreateWithoutUserInput = {
     id?: string
     logradouro: string
-    numero: string
+    numero: number
     complemento?: string | null
     bairro: string
     cidade: string
@@ -8679,7 +8774,7 @@ export namespace Prisma {
   export type enderecoUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     logradouro?: StringFieldUpdateOperationsInput | string
-    numero?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
     complemento?: NullableStringFieldUpdateOperationsInput | string | null
     bairro?: StringFieldUpdateOperationsInput | string
     cidade?: StringFieldUpdateOperationsInput | string
@@ -8692,7 +8787,7 @@ export namespace Prisma {
   export type enderecoUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     logradouro?: StringFieldUpdateOperationsInput | string
-    numero?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
     complemento?: NullableStringFieldUpdateOperationsInput | string | null
     bairro?: StringFieldUpdateOperationsInput | string
     cidade?: StringFieldUpdateOperationsInput | string
