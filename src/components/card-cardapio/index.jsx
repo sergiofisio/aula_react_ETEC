@@ -8,7 +8,7 @@ export function CardCardapio({ imagem, texto, link }) {
     <div className="cards-container">
       <img src={imagem} alt={texto} className="card-image" />
       <h3 className="card-title">{texto}</h3>
-      <button className="card-button" onClick={() => navigate(link)}>
+      <button className="card-button" onClick={() => alert("Em breve")}>
         Visitar
       </button>
     </div>

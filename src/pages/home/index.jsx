@@ -61,7 +61,7 @@ const cards = [
 
 export default function Home() {
   return (
-    <div className="section">
+    <section>
       <Titulo texto="nossa historia" style="cinza" />
       <div className="container-home">
         {cards.map((card, key) => {
@@ -78,6 +78,6 @@ export default function Home() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }
