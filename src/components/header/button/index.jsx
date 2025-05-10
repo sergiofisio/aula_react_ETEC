@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "./button.css";
 
-export default function Button({ icon, className }) {
+export default function Button({ link, icon, className }) {
+  const navigate = useNavigate();
   return (
-    <button className={className}>
+    <button onClick={link} className={className}>
       <img src={icon} alt="Icone de login" />
     </button>
   );
