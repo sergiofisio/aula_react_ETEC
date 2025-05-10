@@ -8,7 +8,7 @@ import PageForm from "./pages/form";
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,7 +17,7 @@ function App() {
         <Route path="/register" element={<PageForm type="register" />} />
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 

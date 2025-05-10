@@ -1,19 +1,16 @@
 import "./card-cardapio.css";
+import { useNavigate } from "react-router-dom";
 
-export function CardCardapio(imagem,
-    texto) {
-    const navigate = useNavigate();
+export function CardCardapio({ imagem, texto, link }) {
+  const navigate = useNavigate();
 
-    return (
-        <div className="cards-container">
-            <img src={card.img} alt={card.title} className="card-image" />
-            <h3 className="card-title">{card.title}</h3>
-            <button
-                className="card-button"
-                onClick={() => navigate(card.link)}
-            >
-                Visitar
-            </button>
-        </div>
-    );
+  return (
+    <div className="cards-container">
+      <img src={imagem} alt={texto} className="card-image" />
+      <h3 className="card-title">{texto}</h3>
+      <button className="card-button" onClick={() => navigate(link)}>
+        Visitar
+      </button>
+    </div>
+  );
 }

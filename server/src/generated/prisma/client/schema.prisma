@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "../src/generated/prisma/client"
 }
 
 datasource db {
@@ -31,7 +31,7 @@ model cliente {
 model endereco {
   id          String   @id @default(uuid())
   logradouro  String
-  numero      String
+  numero      Int
   complemento String?
   bairro      String
   cidade      String
