@@ -33,12 +33,15 @@ const links = [
 const buttons = [
   {
     icon: loginIcon,
+    link: "/login",
   },
   {
     icon: userIcon,
+    link: "/register",
   },
   {
     icon: shopIcon,
+    link: "/cart",
   },
 ];
 
@@ -58,7 +61,12 @@ export function Header() {
       <div className="header__buttons">
         {buttons.map((button, key) => {
           return (
-            <Button className="header__button" icon={button.icon} key={key} />
+            <Button
+              link={button.link}
+              className="header__button"
+              icon={button.icon}
+              key={key}
+            />
           );
         })}
       </div>
