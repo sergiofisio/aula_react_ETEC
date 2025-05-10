@@ -38,13 +38,15 @@ export default function PageForm({ type }) {
   }, [type]);
 
   return (
-    <Form onSubmit={handleSubmit}>
-      {type === "register" ? (
-        <Register form={form} setForm={setForm} />
-      ) : (
-        <Login form={form} setForm={setForm} />
-      )}
-      <Button className="botao-vermelho" text="Enviar" />
-    </Form>
+    <section>
+      <Form onSubmit={handleSubmit}>
+        {type === "register" ? (
+          <Register form={form} setForm={setForm} />
+        ) : (
+          <Login form={form} setForm={setForm} />
+        )}
+        <Button className="botao-vermelho" text="Enviar" />
+      </Form>
+    </section>
   );
 }

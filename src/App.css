@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.section {
+section {
   height: calc(100vh - 270px);
   overflow-y: auto;
 

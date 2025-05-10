@@ -22,16 +22,20 @@
 .primeiro-card {
   width: 90%;
   align-self: start;
+  height: 50%;
 }
 
 .segundo-card {
   width: 70%;
   align-self: end;
+  height: 30%;
 }
 
 .terceiro-card {
   width: 80%;
   align-self: center;
+
+  height: 40%;
 }
 
 .card-home-invertido {
@@ -45,13 +49,6 @@
   background-color: #7e8397;
 }
 
-.imagem-card-grande {
-  height: 300px;
-}
-.imagem-card-medio {
-  height: 200px;
-}
-
-.imagem-card-pequeno {
-  height: 150px;
+.card-home img {
+  height: 100%;
 }
