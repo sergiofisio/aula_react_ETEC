@@ -33,12 +33,15 @@ const links = [
 const buttons = [
   {
     icon: loginIcon,
+    link: "/login",
   },
   {
     icon: userIcon,
+    link: "/register",
   },
   {
     icon: shopIcon,
+    link: "/carrinho",
   },
 ];
 
@@ -58,7 +61,12 @@ export function Header() {
       <div className="header__buttons">
         {buttons.map((button, key) => {
           return (
-            <Button className="header__button" icon={button.icon} key={key} />
+            <Button
+              className="header__button"
+              icon={button.icon}
+              key={key}
+              onClick={() => navigate(button.link)}
+            />
           );
         })}
       </div>

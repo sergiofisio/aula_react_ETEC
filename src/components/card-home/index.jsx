@@ -14,7 +14,11 @@ export default function CardHome({
         vermelho === true ? "card_vermelho" : "card_cinza"
       } ${style} ${invertido === true ? "card-home-invertido" : ""}`}
     >
-      <p>{texto}</p>
+      <div className="container-texto-card">
+        {texto.map((item, key) => {
+          return <p key={key}>{item.paragrafo}</p>;
+        })}
+      </div>
       <img src={imagem} alt="Imagem do card" className={style_imagem} />
     </div>
   );

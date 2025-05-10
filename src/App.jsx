@@ -4,6 +4,7 @@ import { Header } from "./components/header";
 import Home from "./pages/home";
 import Footer from "./components/footer";
 import Cardapio from "./pages/cardapio";
+import PageForm from "./pages/form";
 
 function App() {
   return (

@@ -37,9 +37,9 @@ const cardapio = [
 
 export default function Cardapio() {
   return (
-    <div className="section card-container">
+    <div className="section">
       <Titulo texto="Cardápio" style="cinza" />
-      <div>
+      <div className="container-cardapio">
         {cardapio.map((info, key) => {
           return (
             <CardCardapio
